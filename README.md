@@ -8,9 +8,9 @@ To implement  JK flipflop using verilog and validating their functionality using
 
 Quartus prime
 
-**THEORY**
+**THEORY:**
 
-**JK Flip-Flop**
+**JK Flip-Flop:**
 
 JK flip-flop is the modified version of SR flip-flop. It operates with only positive clock transitions or negative clock transitions. The circuit diagram of JK flip-flop is shown in the following figure.
 
@@ -32,17 +32,68 @@ By using three variable K-Map, we can get the simplified expression for next sta
 
 The maximum possible groupings of adjacent ones are already shown in the figure. Therefore, the simplified expression for next state Qt+1t+1 is Q(t+1)=JQ(t)′+K′Q(t)Q(t+1)=JQ(t)′+K′Q(t)
 
-**Procedure**
+**Procedure:**
 
 /* write all the steps invloved */
 
-**PROGRAM**
+1. Create the JK flip-flop Verilog/VHDL design and compile the project in Quartus.
+2. Open the Simulation Waveform Editor and create a new .vwf file.
+3. Insert the input and output signals (clk, j, k, q, qbar) using Node Finder.
+4. Generate the clock signal and draw the required J and K input waveforms.
+5. Run the functional simulation and observe the output waveforms of q and qbar.
 
-/* Program for flipflops and verify its truth table in quartus using Verilog programming. Developed by: RegisterNumber:
+**PROGRAM:**
+
+/* Program for flipflops and verify its truth table in quartus using Verilog programming. 
+Developed by: A.B.GNANA PRAGATHIKA
+RegisterNumber: 212225230075
 */
 
-**RTL LOGIC FOR FLIPFLOPS**
+module exp4de(q,qb,j,k,clock,reset);
+    input j,k,clock,reset;
+    output reg q, qb;
+	 
+always @ (posedge (clock))
 
-**TIMING DIGRAMS FOR FLIP FLOPS**
+    begin 
+        if (!reset)
+            begin
+               q <= q;
+               qb <=qb;
+            end   
+        
+else
+ //Write logic for JK flipflop using if else statement for four conditions
 
-**RESULTS**
+begin
+               if (j == 0 && k == 0)
+                    begin
+                    q <= q;
+                    qb <= qb;
+                    end 
+		else if (j != k)
+                    begin
+                    q <= j;
+                    qb <= k;
+                    end
+               else if (j == 1 && k == 1) 
+                    begin 
+                    q <= ~q; 
+                    qb <= ~qb; 
+                    end 
+            end
+end  
+endmodule
+
+**RTL LOGIC FOR FLIPFLOPS:**
+
+<img width="990" height="549" alt="Screenshot 2026-06-01 113125" src="https://github.com/user-attachments/assets/eddc90fa-3bd7-4e1a-b9af-5ed0a0fd6b8d" />
+
+
+**TIMING DIGRAMS FOR FLIP FLOPS:**
+
+<img width="1032" height="546" alt="Screenshot 2026-06-01 113146" src="https://github.com/user-attachments/assets/232c9f45-f450-4e2b-85ab-f039ffb5db59" />
+
+
+**RESULTS:**
+Thus, JK flipflop is implemented using Quartus Software.
